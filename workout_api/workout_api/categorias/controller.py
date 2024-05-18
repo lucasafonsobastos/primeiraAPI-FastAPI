@@ -1,5 +1,6 @@
 from uuid import uuid4
-from fastapi import APIRouter, Body, HTTPException, status
+from fastapi import APIRouter, Body, HTTPException, status, Query
+from typing import Annotated, Optional
 from pydantic import UUID4
 from workout_api.categorias.schemas import CategoriaIn, CategoriaOut
 from workout_api.categorias.models import CategoriaModel
@@ -36,7 +37,7 @@ async def post(
 )
 async def query(db_session: DatabaseDependency) -> list[CategoriaOut]:
     categorias: list[CategoriaOut] = (await db_session.execute(select(CategoriaModel))).scalars().all()
-    
+
     return categorias
 
 

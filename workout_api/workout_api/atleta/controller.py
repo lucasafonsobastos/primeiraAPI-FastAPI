@@ -49,8 +49,8 @@ async def post(
         atleta_out = AtletaOut(id=uuid4(), created_at=datetime.utcnow(), **atleta_in.model_dump())
         atleta_model = AtletaModel(**atleta_out.model_dump(exclude={'categoria', 'centro_treinamento'}))
 
-        atleta_model.categoria_id = categoria.pk_id
-        atleta_model.centro_treinamento_id = centro_treinamento.pk_id
+        atleta_model.categoria_id = categoria.id
+        atleta_model.centro_treinamento_id = centro_treinamento.id
         
         db_session.add(atleta_model)
         await db_session.commit()

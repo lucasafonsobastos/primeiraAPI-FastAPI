@@ -18,8 +18,8 @@ class Atleta(BaseSchema):
 
 
 class AtletaIn(Atleta):
-    pass
-
+    nome: Optional[str] = Field(None, description="Nome do atleta")
+    cpf: Optional[str] = Field(None, description="CPF do Atleta")
 
 class AtletaOut(Atleta, OutMixin):
     pass
